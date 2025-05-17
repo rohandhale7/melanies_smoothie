@@ -1,7 +1,6 @@
 # Import Python packages
 from snowflake.snowpark.functions import col, when_matched
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
 
 # Write directly to the app
 st.title(":cup_with_straw: Example Streamlit App :cup_with_straw:")
@@ -11,7 +10,8 @@ title = st.text_input("Name on Smoothie")
 st.write("The name on your Smoothie will be", title)
 
 # Get Snowflake session
-session = get_active_session()
+cnx=st.connected("snowfkale")
+session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_Name')).to_pandas()
 
 # Convert DataFrame column to list
