@@ -10,7 +10,7 @@ title = st.text_input("Name on Smoothie")
 st.write("The name on your Smoothie will be", title)
 
 # Get Snowflake session
-cnx=st.connected("snowflake")
+cnx=st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_Name')).to_pandas()
 
