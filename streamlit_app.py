@@ -42,7 +42,7 @@ if ingredients_list:
     if time_to_insert:
        session.sql("INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES (?, ?)", 
                     [ingredients_string, title]).collect()
-        st.success('Your Smoothie is ordered!', icon="✅")
+       st.success('Your Smoothie is ordered!', icon="✅")
 
 
 
