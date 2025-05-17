@@ -32,7 +32,7 @@ if ingredients_list:
         ingredients_string += fruit_chosen + " "
         st.subheader(fruit_chosen + 'Nutrition Information')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{fruit_chosen}")
-        st.text(smoothiefroot_response)
+        st.text(smoothiefroot_response.json())
 
     # Display SQL statement for debugging
     st.write(f"INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES ('{ingredients_string}', '{title}')")
