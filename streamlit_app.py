@@ -35,7 +35,6 @@ if ingredients_list:
 
     # Display SQL statement for debugging
     st.write(f"INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES ('{ingredients_string}', '{title}')")
-
     # Submit order button
     time_to_insert = st.button('Submit Order')
 
