@@ -31,8 +31,11 @@ if ingredients_list:
     for fruit_chosen in ingredients_list:  # Use singular variable
         ingredients_string += fruit_chosen + " "
         st.subheader(fruit_chosen + 'Nutrition Information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
-        sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{fruit_chosen}")
+            if smoothiefroot_response.status_code == 200:
+                sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+            else:
+                st.error(f"Failed to fetch data for {fruit_chosen}. Please try again.")
 
     # Display SQL statement for debugging
     st.write(f"INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES ('{ingredients_string}', '{title}')")
