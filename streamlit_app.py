@@ -23,7 +23,7 @@ pd_df=my_dataframe.to_pandas()
 #st.stop()
 
 # Convert DataFrame column to list
-fruit_list = my_dataframe['FRUIT_NAME'].tolist()
+fruit_list = pd_df['FRUIT_NAME'].tolist()
 
 # Multiselect for ingredients
 ingredients_list = st.multiselect(
